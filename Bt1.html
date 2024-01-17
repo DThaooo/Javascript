@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai tap 1</title>
+</head>
+
+<body>
+    <script >
+        function grade(text_name,score) {
+            var string_grade;
+                
+                    if(score >= 0 && score <= 100){
+                        if(score > 90){
+                            string_grade = 'Exelence';
+                        }else if(score >= 80){
+                            string_grade = 'Very Good';
+                        }else if(score > 60){
+                            string_grade = 'Fair';
+                        }else if(score >= 50){
+                            string_grade = 'Medium';
+                        }else{
+                            string_grade= 'Fail';
+                        }          
+                    }else{
+                       string_grade = 'Score must be between 0 and 100';
+                    }
+                    document.getElementById('str_grade').innerHTML = text_name + " is grade is <b>" + string_grade + '</b>';
+        }
+    </script>
+
+    <form name="frm_grade" action="#" method="post">
+        <label>Input Student Name: </label>
+        <input type="text" name="txt_name" value="" />
+        <br/>
+        <label>Input Score: </label>
+        <input type="text" name="txt_score" value="" />
+        <input type="button" name="btn_grade" onclick="grade(txt_name.value, txt_score.value)" value="Define Grade" />
+    </form>
+    <div id="str_grade">&nbsp;</div>
+</body>
+
+</html>
