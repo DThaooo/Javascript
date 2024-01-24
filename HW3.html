@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="frm" class="frm">
+        <div>
+            <label>
+                Product Name
+                <input type="text" name="product" id="product" required >
+            </label> 
+            <label>
+                Product Picture:
+                <input type="file" name="img" id="img" required>
+            </label> 
+            <label>
+                Product Price:
+                <input type="number" name="price" id="price" required>
+            </label> 
+        </div>
+        <div>
+            <button type="button" onclick="Add()" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+    <h4>ĐIỆN THOẠI NỔI BẬT NHẤT</h4>
+    <hr class="new">
+    <div class="row" style="padding-left: 20px;">
+    </div>
+
+    <script>
+        function Add() {
+            let pname = frm.product.value;
+            let imgInput = document.getElementById('img');
+            let price = frm.price.value;
+
+            if (imgInput.files && imgInput.files[0]) {
+                let imageFile = imgInput.files[0];
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    let html = `
+                        <div class="card">
+                            <img class="card-img-top" src="${e.target.result}" alt="Card image cap" style="height: 350px;">
+                            <div class="card-body">
+                                <h5 class="card-title">${pname}</h5>
+                                <p class="cart-text" id="price">${price}</p>
+                                <a href="#" class="btn btn-success">Đặt mua</a>
+                            </div>
+                        </div>
+                    `;
+
+                    let app = document.querySelector('.row');
+                    app.innerHTML += html;
+                };
+
+                reader.readAsDataURL(imageFile);
+            }
+        }
+
+    </script>
+</body>
+</html>
