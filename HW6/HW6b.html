@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Customized Login Form</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 login-container">
+                <h2 class="text-center login-header">User Login</h2>
+                <div class="form-group">
+                    <label for="User_Name">User Name</label>
+                    <input type="text" class="form-control login-input" id="User_Name"
+                        placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control login-input" id="Password"
+                        placeholder="Enter your password">
+                </div>
+                <button type="button" onclick="Login(User_Name.value, Password.value)"
+                    class="btn btn-primary btn-block login-btn">Login</button>
+                <button type="button" onclick="Clear()" class="btn btn-secondary btn-block login-btn">Clear</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var Arr = [
+    {
+        id: 1,
+        User_Name: "thao1",
+        Password: "123"
+    },
+    {
+        id: 2,
+        User_Name: "thao2",
+        Password: "123"
+    },
+    {
+        id: 3,
+        User_Name: "thao3",
+        Password: "123"
+    },
+]
+
+function Login(User_Name, Password) {
+    console.log(User_Name, Password)
+    var result = true;
+    for (i = 0; i < Arr.length; i++) {
+        if (User_Name == Arr[i].User_Name) {
+            if (Password == Arr[i].Password) {
+                result = true
+                break
+            } else {
+                result = false
+                continue
+            }
+        } else {
+            result = false
+            continue
+
+        }
+    }
+    if (result == true) {
+        document.write("<b>dang nhap thanh cong</b>");
+    } else {
+        alert("nhap tk va mk")
+    }
+}
+function Clear() {
+    document.getElementById("User_Name").value = ''
+    document.getElementById("Password").value = ''
+}
+</script>
+
+
+</html>

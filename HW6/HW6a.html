@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Customer Name :
+    <input type="text" id="name">
+    <br>
+    ID : 
+    <input type="text" id="id">
+    <br>
+    Product Name : 
+    <input type="text" id="prdname">
+    <br>
+    Quantity:
+    <input type="text" id="qty">
+    <br>
+    Price:
+    <input type="text" id="price">
+    <br>
+
+    <input type="button" value="Save" onclick="save()">
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Reset" onclick="reset()">
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Auto increment</th>
+                <th>Customer Name</th>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tbl"></tbody>
+    </table>
+
+    <script>
+        var arr = [];
+        function save() {
+            var a = {
+             name : document.getElementById('name').value,
+             id : document.getElementById('id').value,
+             prdname : document.getElementById('prdname').value,
+             qty : document.getElementById('qty').value,
+             price : document.getElementById('price').value,
+
+           
+            }
+            console.log(a);
+            arr.push(a);
+        }
+        function show() {
+            var html = '';
+            for (var i = 0; i < arr.length; i++) {
+                var n = i + 1;
+                html += "<tr>";
+                html += "<td>" + n + "</td>";
+                html += "<td>" + arr[i].name + "</td>";
+                html += "<td>" + arr[i].id + "</td>";
+                html += "<td>" + arr[i].prdname + "</td>";
+                html += "<td>" + arr[i].qty + "</td>";
+                html += "<td>" + arr[i].price + "</td>";
+                html += "<td>" + parseFloat(arr[i].qty)*parseFloat(arr[i].price) + "</td>"; //tính giá trị tổng
+                
+                // var total = parseFloat(arr[i].qty) * parseFloat(arr[i].price);  //tính giá trị tổng
+                // html += "<td>" + total + "</td>";
+                html += "</tr>";
+            }
+            document.getElementById('tbl').innerHTML = html;
+        }
+
+        function reset() {
+            document.getElementById('name').value = '';
+            document.getElementById('id').value = '';
+            document.getElementById('prdname').value = '';
+            document.getElementById('qty').value = '';
+            document.getElementById('price').value = '';
+        }
+    </script>
+</body>
+</html>
