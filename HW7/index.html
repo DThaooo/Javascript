@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body onload="showDulich()">
+    <div class="container">
+        <h2>Thêm Địa Điểm</h2>
+        <div class="form">
+            <input type="text" id="Name" placeholder="Điểm đến" />
+            <input type="text" id="Image" placeholder="URL" />
+            <input type="text" id="Chiphi" placeholder="Chi Phí" />
+            <br />
+            <input type="button" value="Thêm" onclick="createDestination()" />
+            <input type="button" value="Xoá" onclick="deleteContent()" />
+        </div>
+
+        <h1>Điểm Đến</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>STT</th>
+                    <th>Điểm Đến</th>
+                    <th>Hình ảnh</th>
+                    <th>Chi Phí</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbl"></tbody>
+        </table>
+
+        <div id="overlay" onclick="closeEditForm()"></div>
+        <div id="editForm" style="display: none">
+            <h2>Sửa Điểm Đến</h2>
+            <input type="text" id="editName" placeholder="Điểm đến" />
+            <input type="text" id="editImage" placeholder="URL" />
+            <input type="text" id="editChiphi" placeholder="Chi Phí" />
+            <br />
+            <input type="button" value="Cập nhật" onclick="update()" />
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
