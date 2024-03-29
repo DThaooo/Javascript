@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Điểm Đến</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        .card-img-top {
+            width: 30%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Chi Tiết Điểm Đến</h1>
+        <div id="destinationDetail" class="mt-3"></div>
+    </div>
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var destinationId = parseInt(urlParams.get('id'));
+
+        var destinations = [
+            {
+                id: 1,
+                name: "Đà Nẵng",
+                price: "5.260.000",
+                image: "https://baohagiang.vn/file/4028eaa4679b32c401679c0c74382a7e/042023/image001_20230421175740.png",
+                ChiTiet: "Du lịch Đà Nẵng là điểm đến hấp dẫn với vẻ đẹp tự nhiên hoang sơ, những bãi biển tuyệt đẹp và nền văn hóa đa dạng. Với chi phí khoảng 5 triệu đồng, du khách có thể trải nghiệm những điểm đến như Bà Nà Hills, Hội An cổ kính, hay tham quan các di tích lịch sử như Ngũ Hành Sơn, đồng thời thưởng thức đặc sản hải sản tươi ngon của vùng biển miền Trung. Đà Nẵng không chỉ là nơi lý tưởng để khám phá văn hóa và ẩm thực Việt Nam mà còn là điểm đến lý tưởng cho những trải nghiệm du lịch độc đáo và tiết kiệm."
+            },
+            {
+                id: 2,
+                name: "Huế",
+                price: "3.060.000",
+                image: "https://vcdn1-dulich.vnecdn.net/2022/04/19/Tu-Cam-Thanh-8609-1650366421.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=LBqjdlUdN7ddoqzRCeVUbA",
+                ChiTiet: "Huế - Thành phố cổ kính của Việt Nam, nơi ghi dấu nhiều trang sử quan trọng trong lịch sử đất nước. Với mức chi phí khoảng 5 triệu đồng, du khách có thể khám phá vẻ đẹp lịch sử của thành phố với các điểm tham quan như Cố Đô Huế, Cung điện Hoàng Gia và các ngôi đền chùa linh thiêng. Ngoài ra, du khách cũng có cơ hội thưởng thức ẩm thực đặc sản Huế hấp dẫn và tham gia trải nghiệm các hoạt động văn hóa truyền thống như xem múa cung đình, tham gia lễ hội truyền thống. Huế không chỉ là điểm đến lý tưởng cho những ai yêu thích lịch sử và văn hóa, mà còn là nơi để trải nghiệm sự bình yên và thanh bình giữa những di sản văn hóa vĩ đại."
+            },
+            {
+                id: 3,
+                name: "Hà Nội",
+                price: "5.660.000",
+                image: "https://vcdn1-dulich.vnecdn.net/2022/05/12/Hanoi2-1652338755-3632-1652338809.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=NxMN93PTvOTnHNryMx3xJw",
+                ChiTiet: "Hà Nội - Thủ đô văn hóa nghìn năm lịch sử của Việt Nam, là điểm đến đầy sức hút với du khách. Với mức chi phí khoảng 5 triệu đồng, du khách có thể khám phá những điểm đến như Hồ Gươm thơ mộng, phố cổ Hà Nội đậm chất truyền thống, và tham quan các di tích lịch sử như Hoàng thành Thăng Long và Chùa Một Cột. Không chỉ là nơi giữ gìn những giá trị văn hóa truyền thống, Hà Nội còn là thiên đường của ẩm thực đường phố đa dạng và phong phú. Du lịch Hà Nội không chỉ là một chuyến hành trình khám phá lịch sử mà còn là cơ hội để trải nghiệm văn hóa và ẩm thực độc đáo của Việt Nam."
+            },
+        ];
+
+        var destination = destinations.find(function(dest) {
+            return dest.id === destinationId;
+        });
+
+        var destinationDetailContainer = document.getElementById("destinationDetail");
+        if (destination) {
+            var destinationDetail = `
+                <div class="card">
+                    <img src="${destination.image}" class="card-img-top" alt="${destination.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${destination.name}</h5>
+                        <p class="card-text">Chi Phí: ${destination.price} VND</p>
+                        <p class="card-text">${destination.ChiTiet || ''}</p>
+                    </div>
+                </div>
+            `;
+            destinationDetailContainer.innerHTML = destinationDetail;
+        } else {
+            destinationDetailContainer.innerHTML = "<p>Không tìm thấy thông tin cho điểm đến này.</p>";
+        }
+    </script>
+</body>
+</html>
